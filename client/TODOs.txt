@@ -1,0 +1,16 @@
+- [ ] Install dependencies
+    - [ ] stream-chat 
+    - [ ] stream-chat-react 
+    - [ ] universal-cookie
+
+- [ ] Setup boiler plate
+    - [ ] import StreamChat from stream-chat
+    - [ ] import Chat from stream-chat-react
+    - [ ] import Cookies from universal-cookie
+    - [ ] Create api key variable from stream
+    - [ ] Create a client variable with StreamChat.getInstance(apiKey)
+    - [ ] Create App.css for styles and import
+
+- [ ] Create Components
+    - [ ] ChannelListContainer
+    - [ ] ChannelContainer
