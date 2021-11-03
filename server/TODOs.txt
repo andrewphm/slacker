@@ -1,0 +1,2 @@
+- [ ] Install dependencies
+    - [ ] bcrypt, crypto, dotenv, express, getstream, stream-chat, nodemon, twilio
