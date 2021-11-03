@@ -11,10 +11,19 @@ const ChannelSearch = () => {
   const [query, setQuery] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
+  const getChannels = async (search) => {
+    try {
+      // TODO: fetch channels
+    } catch (error) {
+      setQuery('');
+    }
+  };
+
   const onSearch = (event) => {
     event.preventDefault();
     setIsLoading(true);
     setQuery(event.target.value);
+    getChannels(event.target.value);
   };
 
   return (

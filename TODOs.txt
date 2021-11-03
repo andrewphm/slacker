@@ -14,6 +14,16 @@ Notes: Stream gives us access to the chat APIs that allows us to search channels
     - [ ] Create a client variable with StreamChat.getInstance(apiKey)
     - [ ] Create App.css for styles and import
 
+- [ ] Implement Authentication
+    - [ ] Create Auth frontend UI
+    - [ ] Create node server
+    - [ ] Create endpoints for sign up and login
+    - [ ] Create user logic
+
+
 - [ ] Create Components
     - [ ] ChannelListContainer
+        - [ ] Sidebar with logo and logout button
+        - [ ] Search Component
+        - [ ]
     - [ ] ChannelContainer
