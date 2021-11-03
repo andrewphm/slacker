@@ -1,3 +1,6 @@
+Notes: Stream gives us access to the chat APIs that allows us to search channels, create channels, send messages, etc but we create the UI
+
+
 - [ ] Install dependencies
     - [ ] stream-chat 
     - [ ] stream-chat-react 
