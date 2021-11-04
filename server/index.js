@@ -8,7 +8,6 @@ const authRoutes = require('./routes/auth.js');
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-// Allow us to call env variables inside our node application
 require('dotenv').config();
 
 // Setup middleware
