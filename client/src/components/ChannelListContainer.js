@@ -36,6 +36,14 @@ const CompanyHeader = () => (
   </div>
 );
 
+// Filters for the ChannelList component
+const customChannelTeamFilter = (channels) => {
+  return channels.filter((channel) => channel.type === 'team');
+};
+const customChannelMessagingFilter = (channels) => {
+  return channels.filter((channel) => channel.type === 'messaging');
+};
+
 const ChannelListContainer = ({
   isCreating,
   setIsCreating,
@@ -63,7 +71,7 @@ const ChannelListContainer = ({
 
         <ChannelList
           filters={{}}
-          channelRenderFilterFn={() => {}}
+          channelRenderFilterFn={customChannelTeamFilter}
           List={(listProps) => (
             <TeamChannelList
               {...listProps}
@@ -81,7 +89,7 @@ const ChannelListContainer = ({
 
         <ChannelList
           filters={{}}
-          channelRenderFilterFn={() => {}}
+          channelRenderFilterFn={customChannelMessagingFilter}
           List={(listProps) => (
             <TeamChannelList
               {...listProps}

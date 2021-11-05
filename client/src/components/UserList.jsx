@@ -60,7 +60,6 @@ const UserList = ({ setSelectedUsers }) => {
           { id: 1 },
           { limit: 8 }
         );
-        console.log(response);
         if (response.users.length) {
           setUsers(response.users);
         } else {
