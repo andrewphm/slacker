@@ -24,7 +24,6 @@ const TeamChannelPreview = ({
       ({ user }) => user.id !== client.userID
     );
 
-    console.log(members);
     return (
       <div className="channel-preview__item single">
         <Avatar
