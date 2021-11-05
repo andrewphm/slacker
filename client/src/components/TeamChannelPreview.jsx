@@ -19,19 +19,20 @@ const TeamChannelPreview = ({
     </p>
   );
 
-  const DirectPreview = () => {
+  const DirectMessagePreview = () => {
     const members = Object.values(channel.state.members).filter(
       ({ user }) => user.id !== client.userID
     );
 
+    console.log(members);
     return (
       <div className="channel-preview__item single">
         <Avatar
-          image={members[0].user.image}
+          image={members[0]?.user?.image}
           name={members[0]?.user?.fullName}
           size={24}
         />
-        <p>{members[0]?.user?.fullName}</p>
+        <p>{members[0]?.user?.name || members[0]?.user?.id}</p>
       </div>
     );
   };
@@ -52,7 +53,7 @@ const TeamChannelPreview = ({
         }
       }}
     >
-      {type === 'team' ? <ChannelPreview /> : <DirectPreview />}
+      {type === 'team' ? <ChannelPreview /> : <DirectMessagePreview />}
     </div>
   );
 };

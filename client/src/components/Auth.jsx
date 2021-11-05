@@ -43,10 +43,10 @@ const Auth = () => {
 
     cookies.set('token', token);
     cookies.set('username', username);
-    cookies.set('fullName', fullName);
     cookies.set('userId', userId);
 
     if (isSignUp) {
+      cookies.set('fullName', fullName);
       cookies.set('phoneNumber', phoneNumber);
       cookies.set('avatarURL', avatarURL);
       cookies.set('hashedPassword', hashedPassword);
