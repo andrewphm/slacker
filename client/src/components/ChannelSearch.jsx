@@ -4,16 +4,46 @@ import React, { useState, useEffect } from 'react';
 import { useChatContext } from 'stream-chat-react';
 
 // Icons
-
 import { SearchIcon } from '../assets/SearchIcon';
 
-const ChannelSearch = () => {
+// Components
+import { ResultsDropdown } from './';
+
+const ChannelSearch = ({ setToggleContainer }) => {
+  const { client, setActiveChannel } = useChatContext();
   const [query, setQuery] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [teamChannels, setTeamChannels] = useState([]);
+  const [directChannels, setDirectChannels] = useState([]);
+
+  useEffect(() => {
+    if (!query) {
+      setTeamChannels([]);
+      setDirectChannels([]);
+    }
+  }, [query]);
 
   const getChannels = async (search) => {
     try {
-      // TODO: fetch channels
+      // let the fetch happen both synchronously
+      const channelResponse = client.queryChannels({
+        type: 'team',
+        name: { $autocomplete: search },
+        members: { $in: [client.userID] },
+      });
+      const userResponse = client.queryUsers({
+        id: { $ne: client.userID },
+        name: { $autocomplete: search },
+      });
+
+      // Only when they are done, destructure their values
+      const [channels, { users }] = await Promise.all([
+        channelResponse,
+        userResponse,
+      ]);
+
+      if (channels.length) setTeamChannels(channels);
+      if (users.length) setDirectChannels(users);
     } catch (error) {
       setQuery('');
     }
@@ -21,9 +51,15 @@ const ChannelSearch = () => {
 
   const onSearch = (event) => {
     event.preventDefault();
+
     setIsLoading(true);
     setQuery(event.target.value);
     getChannels(event.target.value);
+  };
+
+  const setChannel = (channel) => {
+    setQuery('');
+    setActiveChannel(channel);
   };
 
   return (
@@ -40,6 +76,16 @@ const ChannelSearch = () => {
           onChange={onSearch}
         />
       </div>
+      {query && (
+        <ResultsDropdown
+          teamChannels={teamChannels}
+          directChannels={directChannels}
+          isLoading={isLoading}
+          setQuery={setQuery}
+          setChannel={setChannel}
+          setToggleContainer={setToggleContainer}
+        />
+      )}
     </div>
   );
 };
