@@ -20,4 +20,19 @@ Slacker Team Chat is a full stack real-time chat application with authentication
 
 - React - Used functional components to create the UI and pass states/props.
 - Node/express - Used for authentication, create routes to verify and create users.
-- [getstream sdk](https://getstream.io/chat/docs/) - Used many of the core component context providers.
+- [getstream sdk](https://getstream.io/chat/docs/) - Used many of the core component context providers and default styles.
+- [Heroku](https://www.heroku.com) - Used to deploy the server
+- Github pages - Deploy the frontend
+
+## How I made this Applicaiton
+
+### Stream SDK
+
+- Stream's SDK provides many of the core component necessary to get up and running quickly - these core componenets allow you to communicate with the stream backend and create client instances.
+
+```js
+import { StreamChat } from 'stream-chat';
+import { Chat, Channel, ChannelList } from 'stream-chat-react';
+```
+
+1. Authentication - Everytime the application is reloaded, a conditional render is checked. Does user-agent have a valid User Token saved in cookies? Load chat application, else send to login/sign up page.
