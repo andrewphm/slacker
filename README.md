@@ -28,15 +28,15 @@ Slacker Team Chat is a full stack real-time chat application with authentication
 
 ### Stream SDK
 
-Stream's SDK provides many of the core component necessary to get up and running quickly - these core componenets allow you to communicate with the stream backend and create client instances.
-
-These core components are provides by the stream-chat and stream-chat-react packages
+Stream's SDK provides four core components necessary to get up and running quickly - these core componenets allow you to communicate with the stream backend and create client instances.
 
 ```sh
 $ npm install stream-chat stream-chat-react
 ```
 
-#### StreamChat
+The four core components are:
+
+- #### StreamChat
 
 StreamChat allows you to create a client instance with Stream and connect a user.
 
@@ -47,9 +47,9 @@ const client = StreamChat.getInstance(UserAPI);
 client.connectUser({ userInfo }, userToken);
 ```
 
-#### Chat
+- #### Chat
 
-Chat component is a React Context provider that wraps the entire applicaiton. It provides all the chat contexts and values to its children as well as the StreamChat client instance.
+Chat component is a React Context provider that wraps the entire application. It provides all the chat contexts and values to its children as well as the StreamChat client instance.
 
 ```js
 import { Chat, Channel, ChannelList } from 'stream-chat-react';
@@ -60,7 +60,7 @@ import { Chat, Channel, ChannelList } from 'stream-chat-react';
 </Chat>;
 ```
 
-#### Channel
+- #### Channel
 
 Channel component is a React Context provider that wraps all of the logic, functionality, and UI for an individual chat channel. It provides:
 
@@ -69,6 +69,15 @@ Channel component is a React Context provider that wraps all of the logic, funct
 - **custom component UI overrides** (ex: `Avatar` or `Message`)
   and more.
 
-#### ChannelList
+```js
+import { Channel, MessageList, MessageInput } from 'stream-chat-react';
+
+<Channel>
+  <MessageList />
+  <MessageInput />
+</Channel>;
+```
+
+- #### ChannelList
 
 The ChannelList component queries an array of `channel` objects from the Stream Chat API and displays as a customizable list in the UI. ChannelList would be used to render a users list of **Channels** they are in, or a users **Direct Messages**.
