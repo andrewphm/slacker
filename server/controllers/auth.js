@@ -16,9 +16,8 @@ const signup = async (req, res) => {
     const { fullName, username, password, phoneNumber } = req.body;
 
     const userId = crypto.randomBytes(16).toString('hex');
-    const client = StreamChat.getInstance(api_key, api_secret);
 
-    // const serverClient = connect(api_key, api_secret, app_id);
+    const client = StreamChat.getInstance(api_key, api_secret);
 
     const hashedPassword = await bcrytp.hash(password, 10);
 
@@ -37,7 +36,6 @@ const signup = async (req, res) => {
 const login = async (req, res) => {
   try {
     const { username, password } = req.body;
-    // const serverClient = connect(api_key, api_secret, app_id);
 
     const client = StreamChat.getInstance(api_key, api_secret);
 
@@ -47,7 +45,6 @@ const login = async (req, res) => {
 
     const success = await bcrytp.compare(password, users[0].hashedPassword);
 
-    // const token = serverClient.createUserToken(users[0].id);
     const token = client.createToken(users[0].id);
 
     if (success) {

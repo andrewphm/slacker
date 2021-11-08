@@ -28,7 +28,7 @@ const Auth = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const { fullName, username, password, phoneNumber, avatarURL } = form;
+    const { fullName, username, password, avatarURL } = form;
 
     const URL = 'https://slacker-chat.herokuapp.com/auth';
     const {
@@ -37,7 +37,6 @@ const Auth = () => {
       username,
       password,
       fullName,
-      phoneNumber,
       avatarURL,
     });
 
@@ -47,7 +46,6 @@ const Auth = () => {
 
     if (isSignUp) {
       cookies.set('fullName', fullName);
-      cookies.set('phoneNumber', phoneNumber);
       cookies.set('avatarURL', avatarURL);
       cookies.set('hashedPassword', hashedPassword);
     }
@@ -89,22 +87,11 @@ const Auth = () => {
             </div>
             {isSignUp && (
               <div className="auth__form-container_fields-content_input">
-                <label htmlFor="phoneNumber">Phone Number</label>
-                <input
-                  name="phoneNumber"
-                  type="text"
-                  placeholder="Phone Number"
-                  onChange={handleChange}
-                />
-              </div>
-            )}
-            {isSignUp && (
-              <div className="auth__form-container_fields-content_input">
                 <label htmlFor="avatarURL">Avatar URL</label>
                 <input
                   name="avatarURL"
                   type="text"
-                  placeholder="Avatar URL"
+                  placeholder="Avatar URL (optional)"
                   onChange={handleChange}
                 />
               </div>
