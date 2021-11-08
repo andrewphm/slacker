@@ -30,10 +30,10 @@ Slacker Team Chat is a full stack real-time chat application with authentication
 
 Stream's SDK provides many of the core component necessary to get up and running quickly - these core componenets allow you to communicate with the stream backend and create client instances.
 
-```js
-// The four core components given by stream
-import { StreamChat } from 'stream-chat';
-import { Chat, Channel, ChannelList } from 'stream-chat-react';
+These core components are provides by the stream-chat and stream-chat-react packages
+
+```sh
+$ npm install stream-chat stream-chat-react
 ```
 
 #### StreamChat
@@ -52,10 +52,12 @@ client.connectUser({ userInfo }, userToken);
 Chat component is a React Context provider that wraps the entire applicaiton. It provides all the chat contexts and values to its children as well as the StreamChat client instance.
 
 ```js
+import { Chat, Channel, ChannelList } from 'stream-chat-react';
+
 <Chat client={client}>
   <ChannelList />
   <Channel />
-</Chat>
+</Chat>;
 ```
 
 #### Channel
@@ -68,3 +70,5 @@ Channel component is a React Context provider that wraps all of the logic, funct
   and more.
 
 #### ChannelList
+
+The ChannelList component queries an array of `channel` objects from the Stream Chat API and displays as a customizable list in the UI. ChannelList would be used to render a users list of **Channels** they are in, or a users **Direct Messages**.
