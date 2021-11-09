@@ -87,4 +87,32 @@ The ChannelList component queries an array of `channel` objects from the Stream 
 - I used node/express to handle the authentication.
 - There are two authentication routes, one for sign up and one for sign in.
   - Sign up: When signing up, user info is sent to the back-end, a hashed password, user id, and Stream user token is created and sent back to the front-end. The front-end takes this data and calls `client.connectUser(userdata, userToken)` This creates a user in the Stream database.
-  - Login: When logging in the the user info is sent to the back-end and validated. The username is queried in the Stream db, and the password is compared with the hashed password. If the password is correct, a user Token is created and sent to the front-end to call `client.connectUser(userdata, userToken)`
+  - Sign in: When signing in the the user info is sent to the back-end and validated. The username is queried in the Stream db, and the password is compared with the hashed password. If the password is correct, a user Token is created and sent to the front-end to call `client.connectUser(userdata, userToken)`
+
+## What can improve
+
+The project is still a work-in-progress but as far as the core functionality goes, it works as a minimum viable product.
+
+- Add more client-side validation for the sign up form. Ensuring the passwords match, use Regex to validate inputs, etc.
+- Add alerts when sign in data is invalid. Currently the server will send back a 400 status code but nothing on the front-end pops up.
+- Styling and responsiveness
+
+## Available Scripts
+
+The repository holds the front-end and the back-end source code.
+
+- To start the React development server
+
+```sh
+cd client
+npm install
+npm start
+```
+
+- To start the Node development server
+
+```sh
+cd server
+npm install
+npm run dev
+```
