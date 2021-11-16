@@ -1746,6 +1746,26 @@ div.rta__autocomplete.str-chat__emojisearch {
   padding: 10px;
 }
 
+.spinner {
+  border: 5px solid lightgray;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border-top: 5px solid #005fff;
+  animation: spin 0.8s linear infinite;
+  margin: auto;
+  z-index: 100;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
 @media screen and (max-width: 960px) {
   .channel-list__container {
     display: none;

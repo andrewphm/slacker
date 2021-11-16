@@ -7,6 +7,9 @@ import Cookies from 'universal-cookie';
 // Image
 import signinImage from '../assets/signup.jpg';
 
+// Components
+import { Spinner } from './index';
+
 const cookies = new Cookies();
 
 const initialState = {
@@ -21,6 +24,7 @@ const initialState = {
 const Auth = () => {
   const [form, setForm] = useState(initialState);
   const [isSignUp, setIsSignUp] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -28,6 +32,7 @@ const Auth = () => {
 
   const handleDemo = async (e) => {
     e.preventDefault();
+    setIsLoading(true);
     const username = 'Demo';
     const password = 'demo';
 
@@ -43,12 +48,13 @@ const Auth = () => {
     cookies.set('token', token);
     cookies.set('username', username);
     cookies.set('userId', userId);
-
     window.location.reload();
+    setIsLoading(false);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsLoading(true);
     const { fullName, username, password, avatarURL } = form;
 
     const URL = 'https://slacker-chat.herokuapp.com/auth';
@@ -70,8 +76,8 @@ const Auth = () => {
       cookies.set('avatarURL', avatarURL);
       cookies.set('hashedPassword', hashedPassword);
     }
-
     window.location.reload();
+    setIsLoading(false);
   };
 
   const switchMode = () => {
@@ -139,13 +145,17 @@ const Auth = () => {
                 />
               </div>
             )}
-            <div className="auth__form-container_fields-content_button">
-              <button type="onsubmit">
-                {isSignUp ? 'Sign Up' : 'Sign In'}
-              </button>
+            {isLoading ? (
+              <Spinner />
+            ) : (
+              <div className="auth__form-container_fields-content_button">
+                <button type="onsubmit">
+                  {isSignUp ? 'Sign Up' : 'Sign In'}
+                </button>
 
-              <button onClick={handleDemo}>Demo Sign In</button>
-            </div>
+                <button onClick={handleDemo}>Demo Sign In</button>
+              </div>
+            )}
           </form>
           <div className="auth__form-container_fields-account">
             <p>
