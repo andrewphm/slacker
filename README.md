@@ -1,9 +1,9 @@
-# Slacker Team Chat
+# Slackr Team Chat
 
-[http://andrewpham.ca/slacker-fe](http://andrewpham.ca/slacker-fe)
+[http://andrewpham.ca/slackr-fe](http://andrewpham.ca/slackr-fe)
 
 <a href="http://andrewpham.ca/slackr-fe" target="_blank">
-    <img src="./preview.png" alt="Preview of Slacker chat app"> 
+    <img src="./preview.png" alt="Preview of Slackr chat app"> 
 </a>
 
 Slackr Team Chat is a full stack real-time chat application with authentication. It's based off the team collaborating chat application [Slack](https://slack.com/) and it's powered by [Stream](https://getstream.io/). Some of the features are:
