@@ -30,9 +30,12 @@ const SideBar = ({ logout }) => (
   </div>
 );
 
-const CompanyHeader = () => (
+const CompanyHeader = ({ client }) => (
   <div className="channel-list__header">
-    <p className="channel-list__header__text">Slacker</p>
+    <p className="channel-list__header__text">Slackr</p>
+    <p className="channel-list__header__user">
+      Signed in as: {client._user.name}
+    </p>
   </div>
 );
 
@@ -66,12 +69,11 @@ const ChannelListContent = ({
 
   //filters
   const filters = { members: { $in: [client.userID] } };
-
   return (
     <>
       <SideBar logout={logout} />
       <div className="channel-list__list__wrapper">
-        <CompanyHeader />
+        <CompanyHeader client={client} />
         <ChannelSearch setToggleContainer={setToggleContainer} />
 
         <ChannelList

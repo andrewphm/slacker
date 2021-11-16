@@ -96,6 +96,7 @@ The project is still a work-in-progress but as far as the core functionality goe
 - Add more client-side validation for the sign up form. Ensuring the passwords match, use Regex to validate inputs, etc.
 - Add alerts when sign in data is invalid. Currently the server will send back a 400 status code but nothing on the front-end pops up.
 - Styling and responsiveness
+- Use React useContext hook to pass props instead of prop drilling.
 
 ## Available Scripts
 
@@ -116,3 +117,5 @@ cd server
 npm install
 npm run dev
 ```
+
+- Make sure you sign up for a free stream account [here](http://getstream.io/) and add your private keys as env variable for the server.

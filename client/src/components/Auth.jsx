@@ -26,6 +26,27 @@ const Auth = () => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
+  const handleDemo = async (e) => {
+    e.preventDefault();
+    const username = 'Demo';
+    const password = 'demo';
+
+    const URL = 'https://slacker-chat.herokuapp.com/auth';
+
+    const {
+      data: { token, userId },
+    } = await axios.post(`${URL}/login`, {
+      username,
+      password,
+    });
+
+    cookies.set('token', token);
+    cookies.set('username', username);
+    cookies.set('userId', userId);
+
+    window.location.reload();
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const { fullName, username, password, avatarURL } = form;
@@ -122,6 +143,8 @@ const Auth = () => {
               <button type="onsubmit">
                 {isSignUp ? 'Sign Up' : 'Sign In'}
               </button>
+
+              <button onClick={handleDemo}>Demo Sign In</button>
             </div>
           </form>
           <div className="auth__form-container_fields-account">

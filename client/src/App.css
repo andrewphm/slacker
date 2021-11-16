@@ -25,7 +25,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
-
+  align-items: center;
   padding: 2rem;
   background: #005fff;
 }
@@ -45,7 +45,8 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-
+  width: 80%;
+  max-width: 475px;
   padding: 2rem;
   box-shadow: 0px 1px 5px rgb(0 0 0 / 10%);
   border-radius: 5px;
@@ -116,6 +117,7 @@ body {
   margin-top: 2rem;
   display: flex;
   justify-content: flex-start;
+  column-gap: 2rem;
 }
 
 .auth__form-container_fields-content_button button {
@@ -432,6 +434,9 @@ body {
 .channel-list__header {
   padding-left: 16px;
   height: 62px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 }
 
 .channel-list__header__text {
@@ -439,8 +444,15 @@ body {
   font-style: normal;
   font-weight: bold;
   font-size: 18px;
-  line-height: 28px;
   color: #ffffff;
+  margin: 0;
+}
+
+.channel-list__header__user {
+  color: #fff;
+  font-family: Helvetica, sans-serif;
+  font-weight: normal;
+  margin: 0;
 }
 
 .channel-search__container {
@@ -1407,7 +1419,7 @@ ul.str-chat__simple-reactions-list:hover {
 .team-message-input__wrapper .str-chat__textarea textarea {
   display: flex;
   background: #fff;
-  border: none;
+  border: 1px solid grey;
   outline: none;
   font-family: Helvetica Neue, sans-serif;
   font-style: normal;
@@ -1424,8 +1436,8 @@ ul.str-chat__simple-reactions-list:hover {
   background: #fff;
 }
 
-.team-message-input__wrapper .str-chat__textarea textarea::placeholder {
-  color: rgba(0, 0, 0, 0.2);
+.str-chat__textarea textarea::placeholder {
+  color: rgba(0, 0, 0, 0.5);
 }
 
 .team-message-input__icons {
