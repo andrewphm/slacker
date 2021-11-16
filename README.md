@@ -6,7 +6,7 @@
     <img src="./preview.png" alt="Preview of Slacker chat app"> 
 </a>
 
-Slacker Team Chat is a full stack real-time chat application with authentication. It's based off the team collaborating chat application [Slack](https://slack.com/) and it's powered by [Stream](https://getstream.io/). Some of the features are:
+Slackr Team Chat is a full stack real-time chat application with authentication. It's based off the team collaborating chat application [Slack](https://slack.com/) and it's powered by [Stream](https://getstream.io/). Some of the features are:
 
 - Signup and login authentication
 - User Avatar with image
