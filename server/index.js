@@ -10,8 +10,6 @@ const PORT = process.env.PORT || 5000;
 
 require('dotenv').config();
 
-// Setup middleware
-
 // All us to make cross-orgin requests
 app.use(cors());
 

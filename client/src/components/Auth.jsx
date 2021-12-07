@@ -25,6 +25,7 @@ const Auth = () => {
   const [form, setForm] = useState(initialState);
   const [isSignUp, setIsSignUp] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(false);
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -58,26 +59,34 @@ const Auth = () => {
     const { fullName, username, password, avatarURL } = form;
 
     const URL = 'https://slacker-chat.herokuapp.com/auth';
-    const {
-      data: { token, userId, hashedPassword },
-    } = await axios.post(`${URL}/${isSignUp ? 'signup' : 'login'}`, {
-      username,
-      password,
-      fullName,
-      avatarURL,
-    });
 
-    cookies.set('token', token);
-    cookies.set('username', username);
-    cookies.set('userId', userId);
+    try {
+      const {
+        data: { token, userId, hashedPassword },
+      } = await axios.post(`${URL}/${isSignUp ? 'signup' : 'login'}`, {
+        username,
+        password,
+        fullName,
+        avatarURL,
+      });
 
-    if (isSignUp) {
-      cookies.set('fullName', fullName);
-      cookies.set('avatarURL', avatarURL);
-      cookies.set('hashedPassword', hashedPassword);
+      setError(false);
+      cookies.set('token', token);
+      cookies.set('username', username);
+      cookies.set('userId', userId);
+
+      if (isSignUp) {
+        cookies.set('fullName', fullName);
+        cookies.set('avatarURL', avatarURL);
+        cookies.set('hashedPassword', hashedPassword);
+      }
+      window.location.reload();
+      setIsLoading(false);
+    } catch (error) {
+      setIsLoading(false);
+      setError(true);
+      console.log(error);
     }
-    window.location.reload();
-    setIsLoading(false);
   };
 
   const switchMode = () => {
@@ -158,6 +167,9 @@ const Auth = () => {
             )}
           </form>
           <div className="auth__form-container_fields-account">
+            {error && (
+              <p className="error">Username or password is incorrect...</p>
+            )}
             <p>
               {isSignUp ? 'Already have an account?' : "Don't have an account?"}
               <span onClick={switchMode}>

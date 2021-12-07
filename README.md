@@ -93,10 +93,8 @@ The ChannelList component queries an array of `channel` objects from the Stream 
 
 The project is still a work-in-progress but as far as the core functionality goes, it works as a minimum viable product.
 
-- Add more client-side validation for the sign up form. Ensuring the passwords match, use Regex to validate inputs, etc.
-- Add alerts when sign in data is invalid. Currently the server will send back a 400 status code but nothing on the front-end pops up.
 - Styling and responsiveness
-- Use React useContext hook to pass props instead of prop drilling.
+- Utilize useContext hook or Redux for state management instead of prop drilling.
 
 ## Available Scripts
 
